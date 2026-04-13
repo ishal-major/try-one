@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mappila Songs & Audio</title>
+    
+    <link rel="icon" type="image/x-icon" href="major logo.ico">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Readex Pro', sans-serif;
+            margin: 0; /* വശങ്ങളിലെ ഗ്യാപ്പ് ഒഴിവാക്കാൻ */
+            padding: 0;
+            background-color: #f4f7f6;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow-x: hidden;
+        }
+
+        /* --- Navigation Bar Styles --- */
+        .main-header {
+            width: 100%; /* ബാർ ഫുൾ വിഡ്ത്ത് ആക്കാൻ */
+            background-color: #2b7bc3;
+            padding: 12px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1100;
+        }
+
+        .nav-container {
+            width: 100%;
+            max-width: 1200px; 
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .site-logo {
+            width: 35px;
+            height: 35px;
+            border-radius: 5px;
+        }
+
+        .company-name {
+            font-size: 18px;
+            font-weight: 200;
+            color: #ffffff; /* നീലയിൽ വെള്ള കൂടുതൽ ഭംഗി നൽകും */
+            letter-spacing: -0.5px;
+        }
+
+        /* ഹാംബർഗർ മെനു (മൂന്ന് വരകൾ) */
+        .hamburger-menu {
+            cursor: pointer;
+            width: 25px;
+            height: 18px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 5px;
+            transition: 0.3s;
+        }
+
+        .hamburger-menu span {
+            display: block;
+            height: 3px;
+            width: 100%;
+            background-color: #ffffff; /* വരകൾ വെള്ള നിറം */
+            border-radius: 3px;
+            transition: 0.3s;
+        }
+
+        .menu-wrapper {
+            position: relative;
+        }
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            right: 0;
+            top: 45px;
+            background: white;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            border-radius: 8px;
+            min-width: 180px;
+            z-index: 1200;
+            overflow: hidden;
+        }
+
+        .dropdown-menu a {
+            display: block;
+            padding: 12px 16px;
+            text-decoration: none;
+            color: #333;
+            font-size: 14px;
+            border-bottom: 1px solid #eee;
+            font-weight: 500;
+        }
+
+        .dropdown-menu a:last-child { border-bottom: none; }
+        .dropdown-menu a:hover { background-color: #f5f5f5; }
+        .show { display: block !important; }
+
+        /* --- Container & Main Content --- */
+        .container {
+            max-width: 600px;
+            width: 100%;
+            margin: 20px auto;
+            padding: 0 15px;
+            box-sizing: border-box;
+        }
+
+        .back-btn {
+            display: none;
+            background-color: #ffffff;
+            color: #333;
+            border: 1px solid #ddd;
+            padding: 8px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .audio-section {
+            background-color: #222; 
+            background-size: cover;
+            background-position: center;
+            width: 100%; 
+            aspect-ratio: 16 / 9; 
+            border-radius: 15px;
+            margin-bottom: 20px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            overflow: hidden;
+            border: 2px solid #ddd;
+        }
+
+        .audio-container {
+            width: 100%;
+            padding: 20px;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            box-sizing: border-box;
+        }
+
+        audio {
+            width: 100%;
+            display: block;
+        }
+
+        .lyrics-display {
+            display: none;
+            background-color: #ffffff;
+            padding: 30px 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+        }
+
+        #songContent {
+            white-space: pre-wrap;
+            font-size: 16px;
+            font-weight: 600;
+            color: #1a1a1a;
+            line-height: 1.8;
+        }
+
+        .info-box {
+            margin-bottom: 25px;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            border-left: 5px solid #007bbd;
+            font-size: 15px;
+        }
+
+        .song-card {
+            background: #ffffff;
+            padding: 18px;
+            margin-bottom: 12px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .song-card:hover { transform: translateY(-3px); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+    </style>
+</head>
+<body>
+
+<header class="main-header">
+    <div class="nav-container">
+        <div class="logo-section">
+            <img src="major logo.ico" alt="Logo" class="site-logo">
+            <span class="company-name">Ishal Major</span>
+        </div>
+        
+        <div class="menu-wrapper">
+            <div class="hamburger-menu" onclick="toggleMyMenu(event)">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div id="myDropdown" class="dropdown-menu">
+                <a href="#" onclick="copyLink(event)"> Copy Link</a>
+                <a href="#" id="waShare" target="_blank"> Share on WhatsApp</a>
+                <a href="mailto:ishalmajor@gmail.com?subject=Report Song"> Report Song</a>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="container">
+    <button class="back-btn" id="backBtn" onclick="goBack()">← Back</button>
+    
+    <div id="mainView">
+        <div id="songList"></div>
+    </div>
+
+    <div id="lyricsView" class="lyrics-display">
+        <div class="audio-section" id="audioBg">
+            <div class="audio-container">
+                <audio id="audioPlayer" controls>
+                    <source id="audioSource" src="" type="audio/mpeg">
+                </audio>
+            </div>
+        </div>
+        
+        <div id="songContent"></div>
+        <div id="songDescription" class="description-text"></div>
+        <div id="adPlaceholder" style="overflow-x: auto; white-space: nowrap;"></div>
+    </div>
+</div>
+
+<script>
+    const songs = [
+        {
+            title: "ശുജായി തറവാട്ടിലെ",
+            audio: "shujayi.mp3",
+            image: "shujayi.jpg",
+            ishal: "ഇശൽ: ഓശാകൾ ഇടമുറുക്കം",
+            lyricsBy: "Lyrics: Hamza Narokkavu",
+            musicBy: "Music: Haneefa Mudikkode",
+            singer: "Singer: Yumna Ajin",
+            description: "Mappila Songs, Arabic Songs... Ishal Major Contact : 9946170854 & 9037031154",
+            content: `ശുജായി തറവാട്ടിലെ ചിന്ത മികന്തൊരു ചൊങ്കരലംങ്കൃത തങ്കം -2\nശുഹറത്തര് രംഗം അലങ്കൃതപതി മലബാറ് സുകൃതമേ പൊങ്കും -2\n...` 
+        },
+        {
+            title: "തരം യെണ്ട്",
+            audio: "tharyend.mp3",
+            image: "tharam.jpg", 
+            ishal: "ഇശൽ: അടൽ ഫൊരുദ് ചെറുനീട്ട്",
+            lyricsBy: "Lyrics: Moyin Kutty Vaidyar",
+            musicBy: "Music: haneefa mudikkode",
+            singer: "singer: shadin malappuram",
+            description: "Mappila Songs, Arabic Songs... Ishal Major Contact : 9946170854 & 9037031154",
+            content: `തരം യെണ്ടുറച്ചവൻ ബിരുത്താനേ ജനർകളെ\n...`
+        },
+        {
+            title: "ish ish bil ihsani",
+            audio: "song new.mp3",
+            image: "thamb new.jpg", 
+            lyricsBy: "Lyrics: AH Mudikkode",
+            musicBy: "Music: haneefa mudikkode",
+            singer: "singer: Shahsadh Mudikkode",
+            description: "Mappila Songs, Arabic Songs... Ishal Major Contact : 9946170854 & 9037031154",
+            content: `عِشْ عِشْ بِالْاِحْسَانِ\nشُفْ شُفْ بِامْتِنَانِ\n...`
+        }
+    ];
+
+    const songListDiv = document.getElementById('songList');
+    const mainView = document.getElementById('mainView');
+    const lyricsView = document.getElementById('lyricsView');
+    const backBtn = document.getElementById('backBtn');
+    const audioPlayer = document.getElementById('audioPlayer');
+    const audioSource = document.getElementById('audioSource');
+    const audioBg = document.getElementById('audioBg');
+    const songContent = document.getElementById('songContent');
+    const songDescription = document.getElementById('songDescription');
+
+    function displaySongs() {
+        songListDiv.innerHTML = '';
+        songs.forEach((song, index) => {
+            const card = document.createElement('div');
+            card.className = 'song-card';
+            card.innerHTML = `<h3>${song.title}</h3>`;
+            card.onclick = () => showLyrics(index);
+            songListDiv.appendChild(card);
+        });
+    }
+
+    function showLyrics(index) {
+        audioBg.style.backgroundImage = `url('${songs[index].image}')`;
+
+        const songDetails = `
+            <div class="info-box">
+                <div style="color: #007bbd; font-weight: bold; margin-bottom: 5px;">${songs[index].ishal || ''}</div>
+                <div style="color: #444;"><b>${songs[index].lyricsBy}</b></div>
+                <div style="color: #444;"><b>${songs[index].musicBy}</b></div>
+                <div style="color: #444;"><b>${songs[index].singer}</b></div>
+            </div>
+        `;
+
+        songContent.innerHTML = songDetails + songs[index].content;
+        
+        // WhatsApp share update
+        const shareText = encodeURIComponent(`Listen to this song: ${songs[index].title} \n ${window.location.href}`);
+        document.getElementById('waShare').href = `https://api.whatsapp.com/send?text=${shareText}`;
+
+        audioSource.src = songs[index].audio;
+        audioPlayer.load();
+
+        mainView.style.display = 'none';
+        lyricsView.style.display = 'block';
+        backBtn.style.display = 'inline-block';
+        window.scrollTo(0,0);
+    }
+
+    function goBack() {
+        audioPlayer.pause(); 
+        mainView.style.display = 'block';
+        lyricsView.style.display = 'none';
+        backBtn.style.display = 'none';
+    }
+
+    function toggleMyMenu(event) {
+        event.stopPropagation();
+        document.getElementById("myDropdown").classList.toggle("show");
+    }
+
+    function copyLink(event) {
+        event.preventDefault();
+        navigator.clipboard.writeText(window.location.href).then(() => {
+            alert("Link copied to clipboard!");
+        });
+    }
+
+    window.onclick = function(event) {
+        if (!event.target.closest('.menu-wrapper')) {
+            const dropdown = document.getElementById("myDropdown");
+            if (dropdown.classList.contains('show')) {
+                dropdown.classList.remove('show');
+            }
+        }
+    };
+
+    displaySongs();
+</script>
+
+</body>
+</html>
