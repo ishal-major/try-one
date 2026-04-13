@@ -14,7 +14,7 @@
     <style>
         body {
             font-family: 'Readex Pro', sans-serif;
-            margin: 0; /* വശങ്ങളിലെ ഗ്യാപ്പ് ഒഴിവാക്കാൻ */
+            margin: 0;
             padding: 0;
             background-color: #f4f7f6;
             color: #333;
@@ -24,9 +24,8 @@
             overflow-x: hidden;
         }
 
-        /* --- Navigation Bar Styles --- */
         .main-header {
-            width: 100%; /* ബാർ ഫുൾ വിഡ്ത്ത് ആക്കാൻ */
+            width: 100%;
             background-color: #2b7bc3;
             padding: 12px 0;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
@@ -37,7 +36,7 @@
 
         .nav-container {
             width: 100%;
-            max-width: 1200px; 
+            max-width: 1200px;
             margin: 0 auto;
             display: flex;
             align-items: center;
@@ -60,12 +59,11 @@
 
         .company-name {
             font-size: 18px;
-            font-weight: 200;
-            color: #ffffff; /* നീലയിൽ വെള്ള കൂടുതൽ ഭംഗി നൽകും */
+            font-weight: 600;
+            color: #ffffff;
             letter-spacing: -0.5px;
         }
 
-        /* ഹാംബർഗർ മെനു (മൂന്ന് വരകൾ) */
         .hamburger-menu {
             cursor: pointer;
             width: 25px;
@@ -74,16 +72,14 @@
             flex-direction: column;
             justify-content: space-between;
             padding: 5px;
-            transition: 0.3s;
         }
 
         .hamburger-menu span {
             display: block;
             height: 3px;
             width: 100%;
-            background-color: #ffffff; /* വരകൾ വെള്ള നിറം */
+            background-color: #ffffff;
             border-radius: 3px;
-            transition: 0.3s;
         }
 
         .menu-wrapper {
@@ -113,11 +109,9 @@
             font-weight: 500;
         }
 
-        .dropdown-menu a:last-child { border-bottom: none; }
         .dropdown-menu a:hover { background-color: #f5f5f5; }
         .show { display: block !important; }
 
-        /* --- Container & Main Content --- */
         .container {
             max-width: 600px;
             width: 100%;
@@ -137,15 +131,14 @@
             font-size: 14px;
             font-weight: 600;
             margin-bottom: 20px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
         }
 
         .audio-section {
-            background-color: #222; 
+            background-color: #222;
             background-size: cover;
             background-position: center;
-            width: 100%; 
-            aspect-ratio: 16 / 9; 
+            width: 100%;
+            aspect-ratio: 16 / 9;
             border-radius: 15px;
             margin-bottom: 20px;
             position: relative;
@@ -157,16 +150,11 @@
         }
 
         .audio-container {
-            width: 100%;
             padding: 20px;
             background: linear-gradient(transparent, rgba(0,0,0,0.8));
-            box-sizing: border-box;
         }
 
-        audio {
-            width: 100%;
-            display: block;
-        }
+        audio { width: 100%; }
 
         .lyrics-display {
             display: none;
@@ -191,7 +179,6 @@
             background-color: #f9f9f9;
             border-radius: 10px;
             border-left: 5px solid #007bbd;
-            font-size: 15px;
         }
 
         .song-card {
@@ -201,10 +188,7 @@
             border-radius: 10px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.06);
             cursor: pointer;
-            transition: 0.2s;
         }
-
-        .song-card:hover { transform: translateY(-3px); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
     </style>
 </head>
 <body>
@@ -223,9 +207,9 @@
                 <span></span>
             </div>
             <div id="myDropdown" class="dropdown-menu">
-                <a href="#" onclick="copyLink(event)"> Copy Link</a>
-                <a href="#" id="waShare" target="_blank"> Share on WhatsApp</a>
-                <a href="mailto:ishalmajor@gmail.com?subject=Report Song"> Report Song</a>
+                <a href="#" onclick="copyLink(event)">🔗 Copy Link</a>
+                <a href="#" id="waShare" target="_blank">📱 Share on WhatsApp</a>
+                <a href="mailto:ishalmajor@gmail.com?subject=Report Song">⚠️ Report Song</a>
             </div>
         </div>
     </div>
@@ -233,7 +217,6 @@
 
 <div class="container">
     <button class="back-btn" id="backBtn" onclick="goBack()">← Back</button>
-    
     <div id="mainView">
         <div id="songList"></div>
     </div>
@@ -246,10 +229,9 @@
                 </audio>
             </div>
         </div>
-        
         <div id="songContent"></div>
         <div id="songDescription" class="description-text"></div>
-        <div id="adPlaceholder" style="overflow-x: auto; white-space: nowrap;"></div>
+        <div id="adPlaceholder"></div>
     </div>
 </div>
 
@@ -263,167 +245,27 @@
             lyricsBy: "Lyrics: Hamza Narokkavu",
             musicBy: "Music: Haneefa Mudikkode",
             singer: "Singer: Yumna Ajin",
-            description: "Mappila Songs, Arabic Songs... Ishal Major Contact : 9946170854 & 9037031154",
-            content:`ശുജായി തറവാട്ടിലെ ചിന്ത മികന്തൊരു ചൊങ്കരലംങ്കൃത തങ്കം -2
-
-ശുഹറത്തര് രംഗം അലങ്കൃതപതി മലബാറ് സുകൃതമേ പൊങ്കും -2
-
-ശുജഅത്ത മരപ്പുരി മലബാറിന്റെശുജാഈ
-
-വാരിയൻ കുന്ന നവർകളെ ചേതി.
-
-കെങ്കേമ തിമ്മിണി ദമ്മതികോർവായിബന്നമേ, ലങ്കർത ലെങ്കും,
-
-ലങ്കു മതിമ്പരെ വമ്പത് മുമ്പില്
-
-ബന്ത ടർ പിന്തിടപിന്തുടർ പണ്ട്
-
-വെള്ളപ്പടയുടെ കെടുകെടു ബാന്തം
-
-(ഭടർകെടു കൊടുമുടി
-
-പട പെട താണ്ടി) -2
-
-പതറാതിടാസ്വദറ ദിലുള്ളതാ ധീരത നേടിയ ആയുസ്സിന്റെ അന്തസ്സ് ഖിസ്സ ബിശേഷമിതാ..( ശുജയി........)
-
-
-
-
-
-അജബോർ സബ് ഇമ്മിണി ഇമ്മ ലബാറിനെ അതിർപ്പ പ്പൂ ബള് ർ കൂട്ടി
-
-അടയാളം പടിപട മാപ്പിള ദമ്മില് 
-
-അണയ്പടി അണു വിട ഊട്ടി
-
-വെള്ളപ്പടയൂടെ ചതി അതി ചതുർ പുറം
-
-വിലങ്ങരെ ഒളിത്തലമാക്കി 
-
-വള്ളുവരെ കൊല്ലാക്കൊലയും വികൃതമേശവതളർ തടി ആക്കി
-
-(ബനീൻ മനംഫന ഫന
-
-ജന മന ബിന ബിനാ 
-
-തലതടിതഞ്ചം കമാചൊടികമ്പം)2
-
-ചൊടി ചൊടി മുന്തും ചുണുചൊടി ചന്തം
-
-തടി ചൊടിചൂണ്ടും അടിമുടി പൂണ്ടും
-
-മലബാർ അങ്കര് വാരിയൻ ഹുബ്ബര്
-
-തകൃതികൾ വികൃതികൾ വെള്ളടർ ഹുങ്കര്
-
-ഉടൽ ധീര നേരിൻ വാരിയൻ അങ്കര്
-
-അങ്കഅങ്കംഅംഗം കൊണ്ട്
-
-അങ്കിങ്കും ബമ്പും ബീമ്പും
-
-തമ്മില ലംകൃത വള്ളുവ നാട്ടിലെ 
-
-അങ്കം പൊരുതിയ വെള്ളപടയുടെ
-
-ബമ്പുതുരത്തിയ തേജസ്സാം 
-
-ബീരവാരിയൻ ഓജസ്സരേ (ശുജ)
-
-  
-
-
-
-ബേജാറിൻ ബാറിൻ ഏറിയ ബ്രട്ടരേ ഹറബിനെ അമർത്തികരുത്തോൻ
-
-ബഡിവോരുടെ തുടി തകി തകൃതികൾ കിടുകിട ഭടരെ തകർത്തുപരുത്തോൻ
-
-ഫർഹാറ്റ ക്കനിലെങ്കി ഉദിച്ച് കുതിച്ച മഹാമശൂഹൂറേ
-
-ഫുർസാറ്റത്തണി കതിരോളിയെ ഹംസാറ്റൽകോർവായിതീർത്തെ 
-
-തോക്കുമേ ഊ ക്കുമേ കാക്കണേ അള്ളാ
-
-ഊക്കരെ കാക്കണവാരിയൻ വീരൻ
-
-വികൃതമേ പടയുടെ മുനയൊടി ധീരൻ
-
-തകൃതരെ തമർതമർ കതിർഗുണ ചന്ദ്രൻ 
-
-സുകൃത അരുൾ അലംകൃത ചതുർ പുറ തന്ത്രൻ
-
-ഫുറുസകം തളർത്തുടർ അലംകൃത സൂത്രം
-
-ബഅ സ് അടർ വികൃതരെ തളർത്തിയ മിത്രം
-
-മിത്ര ബടാബഹു നേശവരെ 
-
-എത്ര മഹാബഹു ശുഹറവരേ` 
+            description: "Mappila Songs, Arabic Songs...",
+            content: `ശുജായി തറവാട്ടിലെ ചിന്ത മികന്തൊരു ചൊങ്കരലംങ്കൃത തങ്കം -2\n\nശുഹറത്തര് രംഗം അലങ്കൃതപതി മലബാറ് സുകൃതമേ പൊങ്കും -2\n\nശുജഅത്ത മരപ്പുരി മലബാറിന്റെശുജാഈ\n\nവാരിയൻ കുന്ന നവർകളെ ചേതി.\n\nകെങ്കേമ തിമ്മിണി ദമ്മതികോർവായിബന്നമേ, ലങ്കർത ലെങ്കും,\n\nലങ്കു മതിമ്പരെ വമ്പത് മുമ്പില്\n\nബന്ത ടർ പിന്തിടപിന്തുടർ പണ്ട്\n\nവെള്ളപ്പടയുടെ കെടുകെടു ബാന്തം\n\n(ഭടർകെടു കൊടുമുടി\n\nപട പെട താണ്ടി) -2\n\nപതറാതിടാസ്വദറ ദിലുള്ളതാ ധീരത നേടിയ ആയുസ്സിന്റെ അന്തസ്സ് ഖിസ്സ ബിശേഷമിതാ..`
         },
         {
             title: "തരം യെണ്ട്",
             audio: "tharyend.mp3",
-            image: "tharam.jpg", 
+            image: "tharam.jpg",
             ishal: "ഇശൽ: അടൽ ഫൊരുദ് ചെറുനീട്ട്",
             lyricsBy: "Lyrics: Moyin Kutty Vaidyar",
             musicBy: "Music: haneefa mudikkode",
             singer: "singer: shadin malappuram",
-            description: "Mappila Songs, Arabic Songs... Ishal Major Contact : 9946170854 & 9037031154",
-            content:`തരം യെണ്ടുറച്ചവൻ ബിരുത്താനേ ജനർകളെ 
-ഫകുത്താനേ വഹ്‌ശിയും അടുത്താനേ
-
-സമയത്തിൽ ഫുലീ ഹംസ ഇടയ‌നോരാം ഫടകൊടു
-തളർന്ദോരാം കുനിവിലേ നിലയന്ദോരാം
-
-ഫരിശിൽ കണ്ട് അവൻ ഫിമ്പിൽ അണുന്ദാനേ 
-മിർമിയാൽ യെറിന്ദാനേ അവരുടേ ഫുറംതാനെ
-
-ഫടബേങ്കക്ക് അയിൽ മെയ്യിൽ ഫലിന്ദാനേ അജൽവിദി 
-ഫെടുന്ദാനേ ഫുവിയിലേ ബിളുന്ദാനേ
-
-തരുൾനബീ സയ്‌ഫിൽഫൊട്ട് യെദിർത്താനേകനവുടെ 
-ഫൊരുളാനേ ഒരുറජുൽ അവരാനേ
-
-സബബാലും ഖളാ ലൗഹിൽ കുതിബായേ കുറിയുടെ 
-വഖ്‌തായ അദിലവർ ശഹീദായേ
-
-അരുൾ ഉന്ദൻ റിളാ അവർക്ക് ഇറയോനേ സിദഹു 
-ശറഫാനേ ഫള്‌ടെ ദറജാനേ
-
-അവരുടെ ശറഫാലും ഫള്‌ലാലേ ഫഹ്‌ഫള് 
-ഉബയ്‌ദാനേ യെനും ഇരുതലം താനേ`
+            content: `തരം യെണ്ടുറച്ചവൻ ബിരുത്താനേ ജനർകളെ\nഫകുത്താനേ വഹ്‌ശിയും അടുത്താനേ\n\nസമയത്തിൽ ഫുലീ ഹംസ ഇടയ‌നോരാം ഫടകൊടു\nതളർന്ദോരാം കുനിവിലേ നിലയന്ദോരാം\n\nഫരിശിൽ കണ്ട് അവൻ ഫിമ്പിൽ അണുന്ദാനേ\n\nമിർമിയാൽ യെറിന്ദാനേ അവരുടേ ഫുറംതാനെ\n\nഫടബേങ്കക്ക് അയിൽ മെയ്യിൽ ഫലിന്ദാനേ അജൽവിദി\n\nഫെടുന്ദാനേ ഫുവിയിലേ ബിളുന്ദാനേ`
         },
         {
             title: "ish ish bil ihsani",
             audio: "song new.mp3",
-            image: "thamb new.jpg", 
+            image: "thamb new.jpg",
             lyricsBy: "Lyrics: AH Mudikkode",
             musicBy: "Music: haneefa mudikkode",
             singer: "singer: Shahsadh Mudikkode",
-            description: "Mappila Songs, Arabic Songs... Ishal Major Contact : 9946170854 & 9037031154",
-            content:`عِشْ عِشْ بِالْاِحْسَانِ
-شُفْ شُفْ بِامْتِنَانِ 
-صَابِرْ بِالْإِسْعَافِ
-لَامِعْ بِالشَّعْوَاتِ
-هَذَا نَعَمُ حَنَانِ هَذَا طَلَبُ زَمَانٍ
-بُعْدًا بُعْدًا عَفْ شَيْنِ شَدِّدْ رَبْطًا لِلشَّانِ
-
-حَيْرَانَا  ـ فَيْضَانَا
-قَدْ فَاضًا بَعْضَ بِلَادٍ مَلْأٰنًا 
-نَرَى نَرَى حُبًّا - جَرَى جَرَى شَعَفًا
-نَمْشِي بِغَيْرَ العَدَاوَة 
-مَحَى مَحَى مِنَّا 
-وَحَى بَغَى عَنَّا 
-نَنَالُ نُورَ الْمُرَوّة -الْمُرَوّة
-
-رَيْحَانَا ـ فَرْحَانَا
-نَحْنُ هُنُودٌ وَنَحْيَا إِخْوَانَا
-دَعْ دَعْ حَمِيَّة
-فُقْ  بِبَشَاشَة 
-نَجْھَدْ عُلُوَّ الْبِلَادِ
-نَحْنُ بِهِنْدٍ وَطَنُ وُلُودٍ
-نَتَهَنَّى كُلَّ صَلَاحًا-صَلَاحًا
-`
+            content: `عِشْ عِشْ بِالْاِحْسَانِ\nشُفْ شُفْ بِامْتِنَانِ\nصَابِرْ بِالْإِسْعَافِ\nلَامِعْ بِالشَّعْوَاتِ\nهَذَا نَعَمُ حَنَانِ هَذَا طَلَبُ زَمَانٍ\nبُعْدًا بُعْدًا عَفْ شَيْنِ شَدِّدْ രബ്തൻ ലിൽഷാൻ`
         }
     ];
 
@@ -435,7 +277,6 @@
     const audioSource = document.getElementById('audioSource');
     const audioBg = document.getElementById('audioBg');
     const songContent = document.getElementById('songContent');
-    const songDescription = document.getElementById('songDescription');
 
     function displaySongs() {
         songListDiv.innerHTML = '';
@@ -450,25 +291,21 @@
 
     function showLyrics(index) {
         audioBg.style.backgroundImage = `url('${songs[index].image}')`;
-
-        const songDetails = `
+        const details = `
             <div class="info-box">
                 <div style="color: #007bbd; font-weight: bold; margin-bottom: 5px;">${songs[index].ishal || ''}</div>
-                <div style="color: #444;"><b>${songs[index].lyricsBy}</b></div>
-                <div style="color: #444;"><b>${songs[index].musicBy}</b></div>
-                <div style="color: #444;"><b>${songs[index].singer}</b></div>
+                <div><b>${songs[index].lyricsBy}</b></div>
+                <div><b>${songs[index].musicBy}</b></div>
+                <div><b>${songs[index].singer}</b></div>
             </div>
         `;
-
-        songContent.innerHTML = songDetails + songs[index].content;
+        songContent.innerHTML = details + songs[index].content;
         
-        // WhatsApp share update
-        const shareText = encodeURIComponent(`Listen to this song: ${songs[index].title} \n ${window.location.href}`);
+        const shareText = encodeURIComponent(`Listen to: ${songs[index].title} \n ${window.location.href}`);
         document.getElementById('waShare').href = `https://api.whatsapp.com/send?text=${shareText}`;
 
         audioSource.src = songs[index].audio;
         audioPlayer.load();
-
         mainView.style.display = 'none';
         lyricsView.style.display = 'block';
         backBtn.style.display = 'inline-block';
@@ -476,7 +313,7 @@
     }
 
     function goBack() {
-        audioPlayer.pause(); 
+        audioPlayer.pause();
         mainView.style.display = 'block';
         lyricsView.style.display = 'none';
         backBtn.style.display = 'none';
@@ -489,22 +326,16 @@
 
     function copyLink(event) {
         event.preventDefault();
-        navigator.clipboard.writeText(window.location.href).then(() => {
-            alert("Link copied to clipboard!");
-        });
+        navigator.clipboard.writeText(window.location.href).then(() => alert("Link copied!"));
     }
 
     window.onclick = function(event) {
         if (!event.target.closest('.menu-wrapper')) {
-            const dropdown = document.getElementById("myDropdown");
-            if (dropdown.classList.contains('show')) {
-                dropdown.classList.remove('show');
-            }
+            document.getElementById("myDropdown").classList.remove('show');
         }
     };
 
     displaySongs();
 </script>
-
 </body>
 </html>
